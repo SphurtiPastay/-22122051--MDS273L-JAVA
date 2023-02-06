@@ -21,7 +21,7 @@ public class lab1{
             System.out.println("Gender: Male");
         } else if (gender == 'f') {
             System.out.println("Gender: Female");
-        }
+        }           
     
            
         
