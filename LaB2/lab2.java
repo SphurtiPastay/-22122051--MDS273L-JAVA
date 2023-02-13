@@ -31,6 +31,8 @@ public class lab2 {
                             break;
                         }
                     }
+                    
+                    //Check for duplicate names
                     if (!isDuplicate) {
                         names[count++] = name;
                         System.out.println("Name added successfully.");
