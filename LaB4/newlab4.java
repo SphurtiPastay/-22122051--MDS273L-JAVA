@@ -1,21 +1,16 @@
 
 
+
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
+import java.text.SimpleDateFormat;
 
-
-
-public class newlab4 { 
-
-
-
-
-
+public class newlab4 {
     public int accNumber;
     public String accHolderName;
     public double accBalance;
     public ArrayList<String> transactions;
-    
 
     public void Customerdetail() {
         Scanner sc = new Scanner(System.in);
@@ -30,7 +25,7 @@ public class newlab4 {
         accBalance = sc.nextDouble();
 
         transactions = new ArrayList<String>();
-        transactions.add(String.format("Account initialized with balance: $%.2f", accBalance));
+        transactions.add(getTransactionString(accBalance, "Account initialized with balance"));
     }
 
     public void deposit() {
@@ -40,7 +35,7 @@ public class newlab4 {
         double TotalAmount = sc.nextDouble();
 
         accBalance += TotalAmount;
-        transactions.add(String.format("Deposit: $%.2f, New balance: $%.2f", TotalAmount, accBalance));
+        transactions.add(getTransactionString(TotalAmount, "Deposit"));
     }
 
     public void withdraw() {
@@ -55,7 +50,7 @@ public class newlab4 {
         }
 
         accBalance -= TotalAmount;
-        transactions.add(String.format("Withdrawal: $%.2f, New balance: $%.2f", TotalAmount, accBalance));
+        transactions.add(getTransactionString(TotalAmount, "Withdrawal"));
     }
 
     public void printTransactions() {
@@ -65,16 +60,18 @@ public class newlab4 {
     }
 
     public void Summary(){ 
-
         System.out.println("Account number: " + accNumber);
         System.out.println("Account holder name: " + accHolderName);
         System.out.println("Account balance: $" + accBalance);
     }
 
-    public static void main(String[] args) {
-        
-        
+    private String getTransactionString(double amount, String transactionType) {
+        Date now = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return String.format("%s: $%.2f, New balance: $%.2f (%s)", transactionType, amount, accBalance, dateFormat.format(now));
+    }
 
+    public static void main(String[] args) {
         newlab4 account = new newlab4();
         account.Customerdetail();
 
@@ -110,7 +107,5 @@ public class newlab4 {
         }
     }
 }
-
-
-
+    
 
