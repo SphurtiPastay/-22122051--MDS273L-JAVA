@@ -1,17 +1,20 @@
 
 
-
+//import all the packages
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import java.text.SimpleDateFormat;
 
 public class newlab4 {
+    
+    //Variables are globally declared
     public int accNumber;
     public String accHolderName;
     public double accBalance;
     public ArrayList<String> transactions;
 
+    //This function takes in the customer details like account number, name and balance
     public void Customerdetail() {
         Scanner sc = new Scanner(System.in);
 
@@ -28,6 +31,7 @@ public class newlab4 {
         transactions.add(getTransactionString(accBalance, "Account initialized with balance"));
     }
 
+    //This Function Asks the user to deposit and adds up the deposited amount to the TotalAmount
     public void deposit() {
         Scanner sc = new Scanner(System.in);
 
@@ -37,7 +41,9 @@ public class newlab4 {
         accBalance += TotalAmount;
         transactions.add(getTransactionString(TotalAmount, "Deposit"));
     }
-
+    
+    
+//This function ask the user the withdraw the required amount
     public void withdraw() {
         Scanner sc = new Scanner(System.in);
 
@@ -53,12 +59,13 @@ public class newlab4 {
         transactions.add(getTransactionString(TotalAmount, "Withdrawal"));
     }
 
+// This function is used to print all the Transactions made
     public void printTransactions() {
         for (String transaction : transactions) {
             System.out.println(transaction);
         }
     }
-
+// This function shows the details of the customer
     public void Summary(){ 
         System.out.println("Account number: " + accNumber);
         System.out.println("Account holder name: " + accHolderName);
@@ -71,6 +78,7 @@ public class newlab4 {
         return String.format("%s: $%.2f, New balance: $%.2f (%s)", transactionType, amount, accBalance, dateFormat.format(now));
     }
 
+    //main program to run all the functions
     public static void main(String[] args) {
         newlab4 account = new newlab4();
         account.Customerdetail();
